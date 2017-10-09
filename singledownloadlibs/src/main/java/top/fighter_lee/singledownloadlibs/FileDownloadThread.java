@@ -45,7 +45,6 @@ public class FileDownloadThread extends Thread {
         startPos = blockSize * (threadId - 1);
         endPos = blockSize * threadId - 1;
         try {
-            Log.d(TAG, Utils.getCachePath(mContext) + "/" + threadId + ".txt");
             File record_file = new File(Utils.getCachePath(mContext) + "/" + threadId + ".txt");
             if (file.exists() && file.length() > 0) {
                 FileInputStream fis = new FileInputStream(record_file);
@@ -92,9 +91,6 @@ public class FileDownloadThread extends Thread {
                         Log.d(TAG, "线程" + threadId + "取消下载");
                         break;
                     }
-
-                    Log.d(TAG, "run: id:"+threadId+",Pos:"+(downloadLength + startPos)+",endPot:"+endPos+",len:"+len);
-
                     raf.write(buffer, 0, len);
                     downloadLength += len;
                     RandomAccessFile raf2 = new RandomAccessFile(

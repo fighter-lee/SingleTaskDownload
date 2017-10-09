@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public void down_start(View view) {
         new DownloadTask()
                 .setContext(this)
-                .setDownloadFile(new File(getCacheDir() + "/download.zip"))
+                .setDownloadDir(getCacheDir())
+//                .setDownloadFileName("download.zip")//设置下载文件名
                 .setDownloadUrl("https://dldir1.qq.com/qqfile/qq/QQ8.9.5/22057/QQ8.9.5.exe")
                 .setDownloadListener(new IDownloadListener() {
                     @Override
